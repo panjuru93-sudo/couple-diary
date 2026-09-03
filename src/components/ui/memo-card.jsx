@@ -3,6 +3,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
+import ButtonBase from '@mui/material/ButtonBase';
 import AddIcon from '@mui/icons-material/Add';
 
 /**
@@ -13,11 +14,12 @@ import AddIcon from '@mui/icons-material/Add';
  * @param {Array<string>} items - 카드 본문에 나열할 텍스트 목록 [Optional, 기본값: []]
  * @param {boolean} isAddCard - 항목 추가용 빈 카드 여부 [Optional, 기본값: false]
  * @param {boolean} hasCheckbox - 항목 앞에 체크박스 표시 여부 [Optional, 기본값: false]
+ * @param {function} onAdd - isAddCard가 true일 때 클릭 시 실행할 함수 [Optional]
  *
  * Example usage:
  * <MemoCard title="국내 여행지" items={['속초', '서울']} hasCheckbox />
  */
-function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false }) {
+function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false, onAdd }) {
   const [checkedItems, setCheckedItems] = useState({});
 
   const handleToggle = (item) => {
@@ -26,21 +28,21 @@ function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false })
 
   if (isAddCard) {
     return (
-      <Paper
-        elevation={0}
+      <ButtonBase
+        onClick={onAdd}
         sx={{
+          width: '100%',
           height: '100%',
           minHeight: 96,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          borderRadius: 1,
           bgcolor: 'background.paper',
           border: '1px dashed',
           borderColor: 'divider',
+          '&:hover': { bgcolor: 'action.hover', borderColor: 'primary.main' },
         }}
       >
         <AddIcon sx={{ color: 'text.secondary' }} />
-      </Paper>
+      </ButtonBase>
     );
   }
 
