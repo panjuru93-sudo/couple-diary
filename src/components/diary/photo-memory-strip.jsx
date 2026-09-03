@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
+import coupleMeadowPhoto from '../../assets/photos/couple-meadow.jpg';
 
 /**
  * SunsetWalkPhoto 컴포넌트
@@ -41,42 +42,33 @@ function SunsetWalkPhoto() {
 }
 
 /**
- * WarmCloseUpPhoto 컴포넌트
+ * CoupleRealPhoto 컴포넌트
  *
- * Props: 없음
+ * Props:
+ * @param {string} src - 표시할 이미지 경로 [Required]
+ * @param {string} alt - 대체 텍스트 [Required]
  *
  * Example usage:
- * <WarmCloseUpPhoto />
+ * <CoupleRealPhoto src={coupleMeadowPhoto} alt="들판에서 웃고 있는 커플 사진" />
  */
-function WarmCloseUpPhoto() {
+function CoupleRealPhoto({ src, alt }) {
   return (
     <Box
-      component="svg"
-      viewBox="0 0 200 240"
-      preserveAspectRatio="xMidYMid slice"
-      sx={{ width: '100%', height: '100%' }}
-    >
-      <defs>
-        <radialGradient id="warmGlow" cx="35%" cy="35%" r="80%">
-          <stop offset="0%" stopColor="#F3D3B8" />
-          <stop offset="45%" stopColor="#E7B6A6" />
-          <stop offset="75%" stopColor="#C97F72" />
-          <stop offset="100%" stopColor="#7A3B3B" />
-        </radialGradient>
-      </defs>
-      <rect width="200" height="240" fill="url(#warmGlow)" />
-      <circle cx="70" cy="150" r="52" fill="#EFC2AE" opacity="0.55" />
-      <circle cx="140" cy="110" r="46" fill="#7A3B3B" opacity="0.35" />
-      <path
-        d="M100 210c-16-12-30-24-30-40 0-11 8-19 18-19 6 0 11 3 12 8 1-5 6-8 12-8 10 0 18 8 18 19 0 16-14 28-30 40z"
-        fill="#FDEDEB"
-        opacity="0.5"
-      />
-    </Box>
+      component="img"
+      src={src}
+      alt={alt}
+      sx={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+    />
   );
 }
 
-const photoVariants = [SunsetWalkPhoto, WarmCloseUpPhoto];
+const photoItems = [
+  { key: 'sunset-walk', render: () => <SunsetWalkPhoto /> },
+  {
+    key: 'couple-meadow',
+    render: () => <CoupleRealPhoto src={coupleMeadowPhoto} alt="들판에서 웃고 있는 커플 사진" />,
+  },
+];
 
 /**
  * PhotoMemoryStrip 컴포넌트
@@ -103,9 +95,9 @@ function PhotoMemoryStrip({ heading = 'Try recording\nyour love' }) {
       </Box>
 
       <Box sx={{ display: 'flex', gap: 1, overflowX: 'auto' }}>
-        {photoVariants.map((Photo) => (
+        {photoItems.map(({ key, render }) => (
           <Box
-            key={Photo.name}
+            key={key}
             sx={{
               flex: '0 0 auto',
               width: { xs: 88, md: 104 },
@@ -114,7 +106,7 @@ function PhotoMemoryStrip({ heading = 'Try recording\nyour love' }) {
               overflow: 'hidden',
             }}
           >
-            <Photo />
+            {render()}
           </Box>
         ))}
 
