@@ -5,15 +5,16 @@ import Grid from '@mui/material/Grid';
 import MemoCard from '../ui/memo-card';
 
 const initialMemoItems = [
-  { title: '국내 여행지', items: ['⛰️ 속초', '🌊 서울'], hasCheckbox: true },
-  { title: '플레이리스트 ♡', items: ['Tyla - Nutrela', 'Zeth Pacaib', 'A-Live', 'Circles'] },
-  { title: '알러지', items: ['갑각류', '고양이'] },
+  { id: 'travel', title: '국내 여행지', items: ['⛰️ 속초', '🌊 서울'], hasCheckbox: true },
+  { id: 'playlist', title: '플레이리스트 ♡', items: ['Tyla - Nutrela', 'Zeth Pacaib', 'A-Live', 'Circles'] },
+  { id: 'allergy', title: '알러지', items: ['갑각류', '고양이'] },
 ];
 
 /**
  * MemoBoard 컴포넌트
  *
- * Props: 없음 (초기 memoItems를 기반으로 카드 그리드를 렌더링하며, + 버튼으로 새 메모를 추가할 수 있음)
+ * Props: 없음 (초기 memoItems를 기반으로 카드 그리드를 렌더링하며, + 버튼으로 새 메모를 추가하고
+ * 각 카드의 연필 아이콘으로 제목·항목을 수정할 수 있음)
  *
  * Example usage:
  * <MemoBoard />
@@ -26,7 +27,37 @@ function MemoBoard() {
     if (!title) {
       return;
     }
-    setMemoItems((prev) => [...prev, { title, items: [] }]);
+    setMemoItems((prev) => [...prev, { id: `memo-${Date.now()}`, title, items: [] }]);
+  };
+
+  const handleEditMemo = (id) => {
+    setMemoItems((prev) =>
+      prev.map((memo) => {
+        if (memo.id !== id) {
+          return memo;
+        }
+
+        const nextTitle = window.prompt('메모 제목을 수정해주세요', memo.title);
+        if (!nextTitle) {
+          return memo;
+        }
+
+        const nextItemsText = window.prompt(
+          '항목을 쉼표(,)로 구분해서 입력해주세요',
+          memo.items.join(', '),
+        );
+        if (nextItemsText === null) {
+          return { ...memo, title: nextTitle };
+        }
+
+        const nextItems = nextItemsText
+          .split(',')
+          .map((item) => item.trim())
+          .filter(Boolean);
+
+        return { ...memo, title: nextTitle, items: nextItems };
+      }),
+    );
   };
 
   return (
@@ -47,8 +78,13 @@ function MemoBoard() {
 
       <Grid container spacing={1.5}>
         {memoItems.map((memo) => (
-          <Grid key={memo.title} size={{ xs: 6 }}>
-            <MemoCard title={memo.title} items={memo.items} hasCheckbox={memo.hasCheckbox} />
+          <Grid key={memo.id} size={{ xs: 6 }}>
+            <MemoCard
+              title={memo.title}
+              items={memo.items}
+              hasCheckbox={memo.hasCheckbox}
+              onEdit={() => handleEditMemo(memo.id)}
+            />
           </Grid>
         ))}
         <Grid size={{ xs: 6 }}>
