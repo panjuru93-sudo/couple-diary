@@ -91,15 +91,19 @@ function PhotoMemoryStrip({ heading = 'Try recording\nyour love' }) {
           <AddIcon />
         </IconButton>
 
-        <Box
+        <IconButton
           sx={{
             flex: '0 0 auto',
-            width: { xs: 40, md: 48 },
+            width: { xs: 88, md: 104 },
             height: { xs: 108, md: 128 },
             borderRadius: 2,
             bgcolor: 'primary.main',
+            color: 'primary.contrastText',
+            '&:hover': { bgcolor: 'primary.dark' },
           }}
-        />
+        >
+          <AddIcon />
+        </IconButton>
       </Box>
     </Box>
   );

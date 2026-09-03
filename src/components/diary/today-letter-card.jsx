@@ -29,7 +29,7 @@ function TodayLetterCard({
           border: '2px solid',
           borderColor: 'primary.light',
           borderRadius: 2,
-          p: { xs: 2, md: 2.5 },
+          p: { xs: 3, md: 3.5 },
           minHeight: 140,
           backgroundImage:
             'repeating-linear-gradient(rgba(255,255,255,0) 0px, rgba(255,255,255,0) 26px, rgba(255,255,255,0.08) 27px), ' +
