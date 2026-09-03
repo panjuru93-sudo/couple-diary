@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
 
 const reactions = ['⭐', '❤️', '😊', '🍀'];
 
@@ -15,12 +17,21 @@ const reactions = ['⭐', '❤️', '😊', '🍀'];
  * <TodayLetterCard message="이 세상이 무너져도 우리 둘은 함께일 거야" />
  */
 function TodayLetterCard({
-  message = '이 세상이 무너져도\n우리 둘은 함께일 거야\n\n오늘도 만나서 행복해',
+  message: initialMessage = '이 세상이 무너져도\n우리 둘은 함께일 거야\n\n오늘도 만나서 행복해',
 }) {
+  const [message, setMessage] = useState(initialMessage);
   const [activeReactions, setActiveReactions] = useState({});
 
   const handleReactionClick = (emoji) => {
     setActiveReactions((prev) => ({ ...prev, [emoji]: !prev[emoji] }));
+  };
+
+  const handleNewLetter = () => {
+    const nextMessage = window.prompt('새 편지 내용을 입력해주세요', message);
+    if (!nextMessage) {
+      return;
+    }
+    setMessage(nextMessage);
   };
 
   return (
@@ -58,6 +69,24 @@ function TodayLetterCard({
         >
           {message}
         </Typography>
+
+        <IconButton
+          onClick={handleNewLetter}
+          aria-label="새 편지 작성"
+          sx={{
+            position: 'absolute',
+            right: { xs: -10, md: -12 },
+            bottom: { xs: -10, md: -12 },
+            width: 32,
+            height: 32,
+            bgcolor: 'primary.main',
+            color: 'primary.contrastText',
+            boxShadow: 2,
+            '&:hover': { bgcolor: 'primary.dark' },
+          }}
+        >
+          <AddIcon sx={{ fontSize: '1.1rem' }} />
+        </IconButton>
       </Box>
 
       <Box sx={{ display: 'flex', gap: 1 }}>
