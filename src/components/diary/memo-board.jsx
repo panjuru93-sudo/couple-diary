@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import MemoCard from '../ui/memo-card';
 
 const memoItems = [
-  { title: '국내 여행지', items: ['🏔 속초', '🌊 서울'] },
+  { title: '국내 여행지', items: ['🏔 속초', '🌊 서울'], hasCheckbox: true },
   { title: '플레이리스트 ♡', items: ['Tyla - Nutrela', 'Zeth Pacaib', 'A-Live', 'Circles'] },
   { title: '알러지', items: ['갑각류', '고양이'] },
 ];
@@ -37,7 +37,7 @@ function MemoBoard() {
       <Grid container spacing={1.5}>
         {memoItems.map((memo) => (
           <Grid key={memo.title} size={{ xs: 6 }}>
-            <MemoCard title={memo.title} items={memo.items} />
+            <MemoCard title={memo.title} items={memo.items} hasCheckbox={memo.hasCheckbox} />
           </Grid>
         ))}
         <Grid size={{ xs: 6 }}>

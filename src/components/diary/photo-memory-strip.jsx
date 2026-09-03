@@ -3,10 +3,80 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 
-const photoGradients = [
-  'linear-gradient(160deg, #F4A65A 0%, #6B4E8E 60%, #2B2340 100%)',
-  'linear-gradient(160deg, #E7B6A6 0%, #C97F72 60%, #7A3B3B 100%)',
-];
+/**
+ * SunsetWalkPhoto 컴포넌트
+ *
+ * Props: 없음
+ *
+ * Example usage:
+ * <SunsetWalkPhoto />
+ */
+function SunsetWalkPhoto() {
+  return (
+    <Box
+      component="svg"
+      viewBox="0 0 200 240"
+      preserveAspectRatio="xMidYMid slice"
+      sx={{ width: '100%', height: '100%' }}
+    >
+      <defs>
+        <linearGradient id="sunsetSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#F7C873" />
+          <stop offset="35%" stopColor="#F4A65A" />
+          <stop offset="65%" stopColor="#8A5A8E" />
+          <stop offset="100%" stopColor="#2B2340" />
+        </linearGradient>
+      </defs>
+      <rect width="200" height="240" fill="url(#sunsetSky)" />
+      <circle cx="100" cy="120" r="34" fill="#FDE2A0" opacity="0.9" />
+      <path d="M0 176 Q60 150 100 168 T200 160 V240 H0 Z" fill="#241830" opacity="0.9" />
+      <g fill="#1B1224">
+        <circle cx="92" cy="176" r="7" />
+        <rect x="87" y="182" width="10" height="26" rx="4" />
+        <circle cx="112" cy="180" r="7" />
+        <rect x="107" y="186" width="10" height="24" rx="4" />
+      </g>
+    </Box>
+  );
+}
+
+/**
+ * WarmCloseUpPhoto 컴포넌트
+ *
+ * Props: 없음
+ *
+ * Example usage:
+ * <WarmCloseUpPhoto />
+ */
+function WarmCloseUpPhoto() {
+  return (
+    <Box
+      component="svg"
+      viewBox="0 0 200 240"
+      preserveAspectRatio="xMidYMid slice"
+      sx={{ width: '100%', height: '100%' }}
+    >
+      <defs>
+        <radialGradient id="warmGlow" cx="35%" cy="35%" r="80%">
+          <stop offset="0%" stopColor="#F3D3B8" />
+          <stop offset="45%" stopColor="#E7B6A6" />
+          <stop offset="75%" stopColor="#C97F72" />
+          <stop offset="100%" stopColor="#7A3B3B" />
+        </radialGradient>
+      </defs>
+      <rect width="200" height="240" fill="url(#warmGlow)" />
+      <circle cx="70" cy="150" r="52" fill="#EFC2AE" opacity="0.55" />
+      <circle cx="140" cy="110" r="46" fill="#7A3B3B" opacity="0.35" />
+      <path
+        d="M100 210c-16-12-30-24-30-40 0-11 8-19 18-19 6 0 11 3 12 8 1-5 6-8 12-8 10 0 18 8 18 19 0 16-14 28-30 40z"
+        fill="#FDEDEB"
+        opacity="0.5"
+      />
+    </Box>
+  );
+}
+
+const photoVariants = [SunsetWalkPhoto, WarmCloseUpPhoto];
 
 /**
  * PhotoMemoryStrip 컴포넌트
@@ -33,17 +103,19 @@ function PhotoMemoryStrip({ heading = 'Try recording\nyour love' }) {
       </Box>
 
       <Box sx={{ display: 'flex', gap: 1, overflowX: 'auto' }}>
-        {photoGradients.map((gradient) => (
+        {photoVariants.map((Photo) => (
           <Box
-            key={gradient}
+            key={Photo.name}
             sx={{
               flex: '0 0 auto',
               width: { xs: 88, md: 104 },
               height: { xs: 108, md: 128 },
               borderRadius: 2,
-              background: gradient,
+              overflow: 'hidden',
             }}
-          />
+          >
+            <Photo />
+          </Box>
         ))}
 
         <IconButton

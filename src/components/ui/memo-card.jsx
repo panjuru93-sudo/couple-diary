@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
 import AddIcon from '@mui/icons-material/Add';
 
 /**
@@ -10,11 +12,18 @@ import AddIcon from '@mui/icons-material/Add';
  * @param {string} title - 카드 상단에 표시할 제목 [Optional]
  * @param {Array<string>} items - 카드 본문에 나열할 텍스트 목록 [Optional, 기본값: []]
  * @param {boolean} isAddCard - 항목 추가용 빈 카드 여부 [Optional, 기본값: false]
+ * @param {boolean} hasCheckbox - 항목 앞에 체크박스 표시 여부 [Optional, 기본값: false]
  *
  * Example usage:
- * <MemoCard title="국내 여행지" items={['속초', '서울']} />
+ * <MemoCard title="국내 여행지" items={['속초', '서울']} hasCheckbox />
  */
-function MemoCard({ title, items = [], isAddCard = false }) {
+function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false }) {
+  const [checkedItems, setCheckedItems] = useState({});
+
+  const handleToggle = (item) => {
+    setCheckedItems((prev) => ({ ...prev, [item]: !prev[item] }));
+  };
+
   if (isAddCard) {
     return (
       <Paper
@@ -51,14 +60,33 @@ function MemoCard({ title, items = [], isAddCard = false }) {
       >
         {title}
       </Typography>
-      <Box component="ul" sx={{ m: 0, pl: 2, listStyle: 'none' }}>
+      <Box component="ul" sx={{ m: 0, pl: hasCheckbox ? 0 : 2, listStyle: 'none' }}>
         {items.map((item) => (
           <Box
             component="li"
             key={item}
-            sx={{ fontSize: '0.8rem', color: 'text.secondary', mb: 0.5 }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: '0.8rem',
+              color: 'text.secondary',
+              mb: 0.5,
+            }}
           >
-            {item}
+            {hasCheckbox && (
+              <Checkbox
+                size="small"
+                checked={Boolean(checkedItems[item])}
+                onChange={() => handleToggle(item)}
+                sx={{ p: 0.25, mr: 0.5, color: 'primary.main', '&.Mui-checked': { color: 'primary.main' } }}
+              />
+            )}
+            <Box
+              component="span"
+              sx={{ textDecoration: hasCheckbox && checkedItems[item] ? 'line-through' : 'none' }}
+            >
+              {item}
+            </Box>
           </Box>
         ))}
       </Box>

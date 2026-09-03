@@ -23,6 +23,7 @@ function TodayLetterCard({
 
       <Box
         sx={{
+          position: 'relative',
           bgcolor: 'secondary.main',
           color: 'secondary.contrastText',
           border: '2px solid',
@@ -30,11 +31,21 @@ function TodayLetterCard({
           borderRadius: 2,
           p: { xs: 2, md: 2.5 },
           minHeight: 140,
+          backgroundImage:
+            'repeating-linear-gradient(rgba(255,255,255,0) 0px, rgba(255,255,255,0) 26px, rgba(255,255,255,0.08) 27px), ' +
+            'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'2\' stitchTiles=\'stitch\'/><feColorMatrix type=\'saturate\' values=\'0\'/></filter><rect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.35\'/></svg>")',
+          backgroundBlendMode: 'soft-light, normal',
         }}
       >
         <Typography
           variant="body2"
-          sx={{ whiteSpace: 'pre-line', fontSize: '0.8rem', lineHeight: 1.7 }}
+          sx={{
+            position: 'relative',
+            whiteSpace: 'pre-line',
+            fontFamily: '"Playfair Display", serif',
+            fontSize: '0.85rem',
+            lineHeight: '27px',
+          }}
         >
           {message}
         </Typography>
