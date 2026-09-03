@@ -58,6 +58,8 @@ function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false, o
         minHeight: 96,
         p: { xs: 1.5, md: 2 },
         bgcolor: 'background.paper',
+        border: '1px solid',
+        borderColor: 'divider',
       }}
     >
       <IconButton
