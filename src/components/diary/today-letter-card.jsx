@@ -35,6 +35,7 @@ function TodayLetterCard({
             'repeating-linear-gradient(rgba(255,255,255,0) 0px, rgba(255,255,255,0) 26px, rgba(255,255,255,0.08) 27px), ' +
             'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'2\' stitchTiles=\'stitch\'/><feColorMatrix type=\'saturate\' values=\'0\'/></filter><rect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.35\'/></svg>")',
           backgroundBlendMode: 'soft-light, normal',
+          mb: { xs: 2, md: 2.5 },
         }}
       >
         <Typography
@@ -51,7 +52,7 @@ function TodayLetterCard({
         </Typography>
       </Box>
 
-      <Box sx={{ display: 'flex', gap: 1, mt: 1.5 }}>
+      <Box sx={{ display: 'flex', gap: 1 }}>
         {reactions.map((emoji) => (
           <Box
             key={emoji}

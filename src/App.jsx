@@ -25,6 +25,9 @@ function App() {
           maxWidth: { xs: 360, md: 400 },
           overflow: 'hidden',
           bgcolor: 'background.default',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: { xs: 2, md: 3 },
         }}
       >
         <BrandBanner title="D-599" />
