@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
  * BrandBanner 컴포넌트
  *
  * Props:
- * @param {string} title - 배너 중앙에 표시할 타이틀 텍스트 [Required]
+ * @param {string} title - 배너 좌상단에 표시할 타이틀 텍스트 [Required]
  *
  * Example usage:
  * <BrandBanner title="D-599" />
@@ -18,7 +18,7 @@ function BrandBanner({ title }) {
         color: 'primary.contrastText',
         py: { xs: 3, md: 4 },
         px: { xs: 2, md: 3 },
-        textAlign: 'center',
+        textAlign: 'left',
       }}
     >
       <Typography
