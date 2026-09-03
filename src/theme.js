@@ -4,22 +4,22 @@ const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#5C232B',
+      main: '#1A1A1A',
       contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#2C4A3B',
+      main: '#2B2B2B',
       contrastText: '#FFFFFF',
     },
     background: {
-      default: '#F3EEE7',
+      default: '#F2F1EF',
       paper: '#FFFFFF',
     },
     text: {
-      primary: '#2B2320',
-      secondary: '#6F6560',
+      primary: '#1A1A1A',
+      secondary: '#6B6B6B',
     },
-    divider: 'rgba(43, 35, 32, 0.12)',
+    divider: 'rgba(0, 0, 0, 0.12)',
   },
   shape: {
     borderRadius: 14,
