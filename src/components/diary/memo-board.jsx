@@ -6,7 +6,7 @@ import MemoCard from '../ui/memo-card';
 const memoItems = [
   { title: '국내 여행지', items: ['🏔 속초', '🌊 서울'] },
   { title: '플레이리스트 ♡', items: ['Tyla - Nutrela', 'Zeth Pacaib', 'A-Live', 'Circles'] },
-  { title: '알러지', items: ['김덕후', '고양이'] },
+  { title: '알러지', items: ['갑각류', '고양이'] },
 ];
 
 /**
