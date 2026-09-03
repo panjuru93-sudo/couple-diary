@@ -35,8 +35,8 @@ function TodayLetterCard({
   };
 
   return (
-    <Box sx={{ px: { xs: 2, md: 3 }, pb: { xs: 2, md: 3 } }}>
-      <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
+    <Box sx={{ px: { xs: 2, md: 4 }, pb: { xs: 2, md: 3 } }}>
+      <Typography variant="body2" sx={{ fontWeight: 600, mb: 1, fontSize: { xs: '0.875rem', md: '1.1rem' } }}>
         Today&apos;s Letter
       </Typography>
 
@@ -48,8 +48,8 @@ function TodayLetterCard({
           border: '2px solid',
           borderColor: 'primary.light',
           borderRadius: 2,
-          p: { xs: 3, md: 3.5 },
-          minHeight: 140,
+          p: { xs: 3, md: 4.5 },
+          minHeight: { xs: 140, md: 200 },
           backgroundImage:
             'repeating-linear-gradient(rgba(255,255,255,0) 0px, rgba(255,255,255,0) 26px, rgba(255,255,255,0.08) 27px), ' +
             'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'2\' stitchTiles=\'stitch\'/><feColorMatrix type=\'saturate\' values=\'0\'/></filter><rect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.35\'/></svg>")',
@@ -63,7 +63,7 @@ function TodayLetterCard({
             position: 'relative',
             whiteSpace: 'pre-line',
             fontFamily: '"Playfair Display", serif',
-            fontSize: '0.85rem',
+            fontSize: { xs: '0.85rem', md: '1rem' },
             lineHeight: '27px',
           }}
         >
@@ -75,10 +75,10 @@ function TodayLetterCard({
           aria-label="새 편지 작성"
           sx={{
             position: 'absolute',
-            right: { xs: -10, md: -12 },
-            bottom: { xs: -10, md: -12 },
-            width: 32,
-            height: 32,
+            right: { xs: -10, md: -14 },
+            bottom: { xs: -10, md: -14 },
+            width: { xs: 32, md: 42 },
+            height: { xs: 32, md: 42 },
             bgcolor: 'primary.main',
             color: 'primary.contrastText',
             boxShadow: 2,
@@ -89,20 +89,20 @@ function TodayLetterCard({
         </IconButton>
       </Box>
 
-      <Box sx={{ display: 'flex', gap: 1 }}>
+      <Box sx={{ display: 'flex', gap: { xs: 1, md: 1.5 } }}>
         {reactions.map((emoji) => (
           <ButtonBase
             key={emoji}
             onClick={() => handleReactionClick(emoji)}
             sx={{
-              width: 32,
-              height: 32,
+              width: { xs: 32, md: 42 },
+              height: { xs: 32, md: 42 },
               borderRadius: '50%',
               bgcolor: 'background.paper',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '1rem',
+              fontSize: { xs: '1rem', md: '1.3rem' },
               boxShadow: 1,
               border: '2px solid',
               borderColor: activeReactions[emoji] ? 'primary.main' : 'transparent',

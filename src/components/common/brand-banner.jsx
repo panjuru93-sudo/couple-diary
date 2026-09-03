@@ -16,14 +16,14 @@ function BrandBanner({ title }) {
       sx={{
         bgcolor: 'primary.main',
         color: 'primary.contrastText',
-        py: { xs: 3, md: 4 },
-        px: { xs: 2, md: 3 },
+        py: { xs: 3, md: 5 },
+        px: { xs: 2, md: 4 },
         textAlign: 'left',
       }}
     >
       <Typography
         variant="h1"
-        sx={{ fontSize: { xs: '1.6rem', md: '2rem' } }}
+        sx={{ fontSize: { xs: '1.6rem', md: '2.6rem' } }}
       >
         {title}
       </Typography>

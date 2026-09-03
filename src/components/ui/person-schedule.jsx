@@ -22,28 +22,29 @@ function PersonSchedule({ name, statusText }) {
     <Box sx={{ textAlign: 'center', flex: 1 }}>
       <Typography
         variant="subtitle2"
-        sx={{ color: 'primary.contrastText', fontWeight: 700, mb: 1 }}
+        sx={{ color: 'primary.contrastText', fontWeight: 700, mb: 1, fontSize: { xs: '0.875rem', md: '1.05rem' } }}
       >
         {name}
       </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1, mb: 1 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: { xs: 1, md: 1.5 }, mb: 1 }}>
         {icons.map((Icon, index) => (
           <IconButton
             key={Icon.displayName ?? index}
-            size="small"
             sx={{
+              width: { xs: 32, md: 44 },
+              height: { xs: 32, md: 44 },
               bgcolor: 'secondary.main',
               color: 'secondary.contrastText',
               '&:hover': { bgcolor: 'secondary.dark' },
             }}
           >
-            <Icon sx={{ fontSize: '1rem' }} />
+            <Icon sx={{ fontSize: { xs: '1rem', md: '1.3rem' } }} />
           </IconButton>
         ))}
       </Box>
       <Typography
         variant="caption"
-        sx={{ color: 'rgba(255,255,255,0.75)' }}
+        sx={{ color: 'rgba(255,255,255,0.75)', fontSize: { xs: '0.75rem', md: '0.9rem' } }}
       >
         {statusText}
       </Typography>

@@ -48,27 +48,36 @@ const photoItems = [
  */
 function PhotoMemoryStrip({ heading = 'Try recording\nyour love' }) {
   return (
-    <Box sx={{ px: { xs: 2, md: 3 }, py: { xs: 2, md: 3 } }}>
+    <Box sx={{ px: { xs: 2, md: 4 }, py: { xs: 2, md: 4 } }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 1.5 }}>
         <Typography
           variant="body2"
-          sx={{ fontWeight: 600, whiteSpace: 'pre-line', lineHeight: 1.3 }}
+          sx={{ fontWeight: 600, whiteSpace: 'pre-line', lineHeight: 1.3, fontSize: { xs: '0.875rem', md: '1.1rem' } }}
         >
           {heading}
         </Typography>
-        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+        <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.75rem', md: '0.9rem' } }}>
           Portfolio
         </Typography>
       </Box>
 
-      <Box sx={{ display: 'flex', gap: 1, overflowX: 'auto' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: { xs: 1, md: 2 },
+          overflowX: 'auto',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          '&::-webkit-scrollbar': { display: 'none' },
+        }}
+      >
         {photoItems.map(({ key, render }) => (
           <Box
             key={key}
             sx={{
               flex: '0 0 auto',
-              width: { xs: 88, md: 104 },
-              height: { xs: 108, md: 128 },
+              width: { xs: 88, md: 160 },
+              height: { xs: 108, md: 190 },
               borderRadius: 2,
               overflow: 'hidden',
             }}
@@ -80,8 +89,8 @@ function PhotoMemoryStrip({ heading = 'Try recording\nyour love' }) {
         <IconButton
           sx={{
             flex: '0 0 auto',
-            width: { xs: 88, md: 104 },
-            height: { xs: 108, md: 128 },
+            width: { xs: 88, md: 160 },
+            height: { xs: 108, md: 190 },
             borderRadius: 2,
             bgcolor: 'primary.main',
             color: 'primary.contrastText',
@@ -94,8 +103,8 @@ function PhotoMemoryStrip({ heading = 'Try recording\nyour love' }) {
         <IconButton
           sx={{
             flex: '0 0 auto',
-            width: { xs: 88, md: 104 },
-            height: { xs: 108, md: 128 },
+            width: { xs: 88, md: 160 },
+            height: { xs: 108, md: 190 },
             borderRadius: 2,
             bgcolor: 'primary.main',
             color: 'primary.contrastText',

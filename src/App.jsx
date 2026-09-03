@@ -22,12 +22,12 @@ function App() {
         elevation={0}
         sx={{
           width: '100%',
-          maxWidth: { xs: 360, md: 400 },
+          maxWidth: { xs: 360, sm: 480, md: 640, lg: 760 },
           overflow: 'hidden',
           bgcolor: 'background.default',
           display: 'flex',
           flexDirection: 'column',
-          gap: { xs: 2, md: 3 },
+          gap: { xs: 2, md: 3.5 },
         }}
       >
         <BrandBanner title="D-599" />

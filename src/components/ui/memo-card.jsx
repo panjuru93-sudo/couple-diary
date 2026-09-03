@@ -36,7 +36,7 @@ function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false, o
         sx={{
           width: '100%',
           height: '100%',
-          minHeight: 96,
+          minHeight: { xs: 96, md: 130 },
           borderRadius: 1,
           bgcolor: 'background.paper',
           border: '1px dashed',
@@ -55,8 +55,8 @@ function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false, o
       sx={{
         position: 'relative',
         height: '100%',
-        minHeight: 96,
-        p: { xs: 1.5, md: 2 },
+        minHeight: { xs: 96, md: 130 },
+        p: { xs: 1.5, md: 2.5 },
         bgcolor: 'background.paper',
         border: '1px solid',
         borderColor: 'divider',
@@ -73,7 +73,7 @@ function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false, o
 
       <Typography
         variant="body2"
-        sx={{ fontWeight: 600, mb: 1, pr: 2.5 }}
+        sx={{ fontWeight: 600, mb: 1, pr: 2.5, fontSize: { xs: '0.875rem', md: '1rem' } }}
       >
         {title}
       </Typography>
@@ -85,7 +85,7 @@ function MemoCard({ title, items = [], isAddCard = false, hasCheckbox = false, o
             sx={{
               display: 'flex',
               alignItems: 'center',
-              fontSize: '0.8rem',
+              fontSize: { xs: '0.8rem', md: '0.9rem' },
               color: 'text.secondary',
               mb: 0.5,
             }}

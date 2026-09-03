@@ -59,24 +59,24 @@ function MemoBoard() {
   };
 
   return (
-    <Box sx={{ px: { xs: 2, md: 3 }, pb: { xs: 3, md: 4 } }}>
+    <Box sx={{ px: { xs: 2, md: 4 }, pb: { xs: 3, md: 5 } }}>
       <Box
         sx={{
           bgcolor: 'primary.main',
           color: 'primary.contrastText',
           textAlign: 'center',
-          py: 1,
-          mb: 1.5,
+          py: { xs: 1, md: 1.5 },
+          mb: { xs: 1.5, md: 2.5 },
         }}
       >
-        <Typography variant="h2" sx={{ fontSize: '1.1rem' }}>
+        <Typography variant="h2" sx={{ fontSize: { xs: '1.1rem', md: '1.5rem' } }}>
           Memo
         </Typography>
       </Box>
 
-      <Grid container spacing={1.5}>
+      <Grid container spacing={{ xs: 1.5, md: 2.5 }}>
         {memoItems.map((memo) => (
-          <Grid key={memo.id} size={{ xs: 6 }}>
+          <Grid key={memo.id} size={{ xs: 6, md: 4 }}>
             <MemoCard
               title={memo.title}
               items={memo.items}
@@ -85,7 +85,7 @@ function MemoBoard() {
             />
           </Grid>
         ))}
-        <Grid size={{ xs: 6 }}>
+        <Grid size={{ xs: 6, md: 4 }}>
           <MemoCard isAddCard onAdd={handleAddMemo} />
         </Grid>
       </Grid>
