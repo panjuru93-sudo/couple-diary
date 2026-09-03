@@ -3,43 +3,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import coupleMeadowPhoto from '../../assets/photos/couple-meadow.jpg';
-
-/**
- * SunsetWalkPhoto 컴포넌트
- *
- * Props: 없음
- *
- * Example usage:
- * <SunsetWalkPhoto />
- */
-function SunsetWalkPhoto() {
-  return (
-    <Box
-      component="svg"
-      viewBox="0 0 200 240"
-      preserveAspectRatio="xMidYMid slice"
-      sx={{ width: '100%', height: '100%' }}
-    >
-      <defs>
-        <linearGradient id="sunsetSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#F7C873" />
-          <stop offset="35%" stopColor="#F4A65A" />
-          <stop offset="65%" stopColor="#8A5A8E" />
-          <stop offset="100%" stopColor="#2B2340" />
-        </linearGradient>
-      </defs>
-      <rect width="200" height="240" fill="url(#sunsetSky)" />
-      <circle cx="100" cy="120" r="34" fill="#FDE2A0" opacity="0.9" />
-      <path d="M0 176 Q60 150 100 168 T200 160 V240 H0 Z" fill="#241830" opacity="0.9" />
-      <g fill="#1B1224">
-        <circle cx="92" cy="176" r="7" />
-        <rect x="87" y="182" width="10" height="26" rx="4" />
-        <circle cx="112" cy="180" r="7" />
-        <rect x="107" y="186" width="10" height="24" rx="4" />
-      </g>
-    </Box>
-  );
-}
+import coupleSunsetPhoto from '../../assets/photos/couple-sunset.jpg';
 
 /**
  * CoupleRealPhoto 컴포넌트
@@ -63,7 +27,10 @@ function CoupleRealPhoto({ src, alt }) {
 }
 
 const photoItems = [
-  { key: 'sunset-walk', render: () => <SunsetWalkPhoto /> },
+  {
+    key: 'couple-sunset',
+    render: () => <CoupleRealPhoto src={coupleSunsetPhoto} alt="노을 지는 언덕에서 손잡고 걷는 커플 사진" />,
+  },
   {
     key: 'couple-meadow',
     render: () => <CoupleRealPhoto src={coupleMeadowPhoto} alt="들판에서 웃고 있는 커플 사진" />,
