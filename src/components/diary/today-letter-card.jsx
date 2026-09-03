@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import ButtonBase from '@mui/material/ButtonBase';
 
 const reactions = ['⭐', '❤️', '😊', '🍀'];
 
@@ -15,6 +17,12 @@ const reactions = ['⭐', '❤️', '😊', '🍀'];
 function TodayLetterCard({
   message = '이 세상이 무너져도\n우리 둘은 함께일 거야\n\n오늘도 만나서 행복해',
 }) {
+  const [activeReactions, setActiveReactions] = useState({});
+
+  const handleReactionClick = (emoji) => {
+    setActiveReactions((prev) => ({ ...prev, [emoji]: !prev[emoji] }));
+  };
+
   return (
     <Box sx={{ px: { xs: 2, md: 3 }, pb: { xs: 2, md: 3 } }}>
       <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
@@ -54,8 +62,9 @@ function TodayLetterCard({
 
       <Box sx={{ display: 'flex', gap: 1 }}>
         {reactions.map((emoji) => (
-          <Box
+          <ButtonBase
             key={emoji}
+            onClick={() => handleReactionClick(emoji)}
             sx={{
               width: 32,
               height: 32,
@@ -66,10 +75,14 @@ function TodayLetterCard({
               justifyContent: 'center',
               fontSize: '1rem',
               boxShadow: 1,
+              border: '2px solid',
+              borderColor: activeReactions[emoji] ? 'primary.main' : 'transparent',
+              transform: activeReactions[emoji] ? 'scale(1.15)' : 'scale(1)',
+              transition: 'transform 0.15s ease, border-color 0.15s ease',
             }}
           >
             {emoji}
-          </Box>
+          </ButtonBase>
         ))}
       </Box>
     </Box>
