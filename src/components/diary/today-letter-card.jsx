@@ -35,7 +35,7 @@ function TodayLetterCard({
   };
 
   return (
-    <Box sx={{ px: { xs: 2, md: 4 }, pb: { xs: 2, md: 3 } }}>
+    <Box sx={{ px: { xs: 2, md: 4 }, py: { xs: 2.5, md: 4 } }}>
       <Typography variant="body2" sx={{ fontWeight: 600, mb: 1, fontSize: { xs: '0.875rem', md: '1.1rem' } }}>
         Today&apos;s Letter
       </Typography>

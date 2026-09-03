@@ -28,7 +28,6 @@ function App() {
           boxShadow: { xs: 1, md: 4 },
           display: 'flex',
           flexDirection: 'column',
-          gap: { xs: 2, md: 3.5 },
         }}
       >
         <BrandBanner title="D-599" />

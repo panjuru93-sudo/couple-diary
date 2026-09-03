@@ -48,7 +48,7 @@ const photoItems = [
  */
 function PhotoMemoryStrip({ heading = 'Try recording\nyour love' }) {
   return (
-    <Box sx={{ px: { xs: 2, md: 4 }, py: { xs: 2, md: 4 } }}>
+    <Box sx={{ px: { xs: 2, md: 4 }, py: { xs: 2.5, md: 4 } }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 1.5 }}>
         <Typography
           variant="body2"

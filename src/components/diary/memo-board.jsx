@@ -59,7 +59,7 @@ function MemoBoard() {
   };
 
   return (
-    <Box sx={{ px: { xs: 2, md: 4 }, pb: { xs: 3, md: 5 } }}>
+    <Box sx={{ px: { xs: 2, md: 4 }, py: { xs: 2.5, md: 4 } }}>
       <Box
         sx={{
           bgcolor: 'primary.main',
