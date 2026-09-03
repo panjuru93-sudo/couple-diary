@@ -38,16 +38,14 @@ function MemoBoard() {
         }
 
         const nextTitle = window.prompt('메모 제목을 수정해주세요', memo.title);
-        if (!nextTitle) {
-          return memo;
-        }
+        const resolvedTitle = nextTitle === null || nextTitle.trim() === '' ? memo.title : nextTitle.trim();
 
         const nextItemsText = window.prompt(
           '항목을 쉼표(,)로 구분해서 입력해주세요',
           memo.items.join(', '),
         );
         if (nextItemsText === null) {
-          return { ...memo, title: nextTitle };
+          return { ...memo, title: resolvedTitle };
         }
 
         const nextItems = nextItemsText
@@ -55,7 +53,7 @@ function MemoBoard() {
           .map((item) => item.trim())
           .filter(Boolean);
 
-        return { ...memo, title: nextTitle, items: nextItems };
+        return { ...memo, title: resolvedTitle, items: nextItems };
       }),
     );
   };
